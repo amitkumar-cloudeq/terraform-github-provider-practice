@@ -1,53 +1,15 @@
-name: Terraform Deploy
-# Controls when the workflow will run
+name: 'Terraform'
+
+
 on:
-  # Triggers the workflow on push or pull request events but only for the "master" branch
   workflow_dispatch:
-  push:
-    branches: [ "master" ]
-  #pull_request:
-    #branches: [ "master" ]
+    push:
+      branches["master"]
 
-
-
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+
   terraform:
-    name: terraform
+    name: "terraform"
     runs-on: ubuntu-latest
-  - name: tesds
     env:
-      PAT_TOKEN:${{Secrets.PAT_TOKEN}}
-
-   # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      - uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_wrapper: false
-      - name: Terraform Init
-        id: init
-        run: |
-          rm -rf .terraform
-      #search terraform backend command input in line no 35
-
-
-      - name: Terraform Plan
-        id: plan
-        run: |
-          terraform plan
-
-
-
-      - name: Terraform Apply
-        id: Apply
-        run: |
-          terraform apply -auto-approve
-
-
-
-     # - name: Terraform destroy
-      #   id: destroy
-      #   run: terraform destroy -auto-approve
+      PAT_TOKEN":${secrets.PAT_TOKEN}
