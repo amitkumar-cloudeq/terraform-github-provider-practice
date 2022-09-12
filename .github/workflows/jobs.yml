@@ -17,15 +17,11 @@ jobs:
     name: terraform
     runs-on: ubuntu-latest
 
-
-
-   env:
-        PAT_TOKEN:${{Secrets.PAT_TOKEN}}
-
-
+env:
+  PAT_TOKEN:${{Secrets.PAT_TOKEN}}
 
    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
+steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v1
@@ -38,15 +34,14 @@ jobs:
       #search terraform backend command input in line no 35
 
 
-
-     - name: Terraform Plan
+      - name: Terraform Plan
         id: plan
         run: |
           terraform plan
 
 
 
-     - name: Terraform Apply
+      - name: Terraform Apply
         id: Apply
         run: |
           terraform apply -auto-approve
