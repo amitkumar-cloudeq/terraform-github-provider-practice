@@ -16,12 +16,12 @@ jobs:
   terraform:
     name: terraform
     runs-on: ubuntu-latest
-
-env:
-  PAT_TOKEN:${{Secrets.PAT_TOKEN}}
+  - name: tesds
+    env:
+      PAT_TOKEN:${{Secrets.PAT_TOKEN}}
 
    # Steps represent a sequence of tasks that will be executed as part of the job
-steps:
+    steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v1
