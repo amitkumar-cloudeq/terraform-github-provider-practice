@@ -10,6 +10,7 @@ permissions:
 
 env:
   PAT_TOKEN: ${{secrets.PAT_TOKEN}}
+  
 
 
 jobs:
@@ -36,10 +37,12 @@ jobs:
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
+      working-directory: ${{env}}
    
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan -input=false
+      working-directory: ${{env}}
 
   terraform_appy:
     name: 'Terraform apply'
@@ -66,7 +69,9 @@ jobs:
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
+      working-directory: ${{env}}
    
     # Generates an execution plan for Terraform
     - name: Terraform apply
       run: terraform apply --auto-approve
+      working-directory: ${{env}}
