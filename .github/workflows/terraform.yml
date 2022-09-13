@@ -49,7 +49,7 @@ jobs:
     name: 'Terraform apply'
     runs-on: ubuntu-latest
     needs: [terraform_plan]
-    environment: production
+    #environment: production
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -69,7 +69,7 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
-        PAT_TOKEN: ${{secrets.PAT_TOKEN}}
+        creds: '{"clientId":"${{ env.CLIENT_ID }}","clientSecret":"${{ env.CLIENT_SECRETS }}"}'
 
     - name: Setup git global config
       run: git config --global url."https://oauth2:${{secrets.PAT_TOKEN}}@github.com".insteadOf https://github.com
