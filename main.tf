@@ -1,5 +1,5 @@
 resource "github_repository" "git_repo" {
-  nam = var.github_repository_description
+  name = var.github_repository_name
   description = var.github_repository_description
   visibility = var.github_repository_visibility
 }
