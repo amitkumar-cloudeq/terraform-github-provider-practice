@@ -10,7 +10,8 @@ permissions:
 
 env:
   PAT_TOKEN: ${{secrets.PAT_TOKEN}}
-
+  CLIENT_ID: ${{secrets.CLIENT_ID}}
+  CLIENT_SECRETS: ${{secrets.CLIENT_SECRETS}}
 
 jobs:
   terraform_plan:
