@@ -69,7 +69,7 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
-        creds: '{"clientId":"${{ env.CLIENT_ID }}","clientSecret":"${{ env.CLIENT_SECRETS }}"}'
+        creds: '{"CLIENT_ID":"${{ env.CLIENT_ID }}","CLIENT_SECRETS":"${{ env.CLIENT_SECRETS }}"}'
 
     - name: Setup git global config
       run: git config --global url."https://oauth2:${{secrets.PAT_TOKEN}}@github.com".insteadOf https://github.com
