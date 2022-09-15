@@ -28,8 +28,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+
     - name: Setup git global config
-      run: git config --global url."https://oauth2:${{secrets.CLI_CONFIG_CREDENTIALS_TOKEN}}@github.com".insteadOf https://github.com
+      env:
+        CLI_CONFIG_CREDENTIALS_TOKEN: ${{secrets.CLI_CONFIG_CREDENTIALS_TOKEN}}
+
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
@@ -68,8 +71,11 @@ jobs:
         CLI_CONFIG_CREDENTIALS_TOKEN: ${{secrets.CLI_CONFIG_CREDENTIALS_TOKEN}}
         #creds: '{"CLIENT_ID":"${{ env.CLIENT_ID }}","CLIENT_SECRETS":"${{ env.CLIENT_SECRETS }}"}'
 
+
     - name: Setup git global config
-      run: git config --global url."https://oauth2:${{secrets.CLI_CONFIG_CREDENTIALS_TOKEN}}@github.com".insteadOf https://github.com
+      env:
+        CLI_CONFIG_CREDENTIALS_TOKEN: ${{secrets.CLI_CONFIG_CREDENTIALS_TOKEN}}
+
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
