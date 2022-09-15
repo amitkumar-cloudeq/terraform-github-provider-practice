@@ -8,3 +8,8 @@ resource "github_repository" "git_repo" {
 output "gitrepo" {
     value = github_repository.git_repo.name
 }
+
+
+
+
+
